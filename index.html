@@ -1,318 +1,302 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GUPTA TRADERS Invoice</title>
-    <style>
+
+<head>
+  <title>GUPTA TRADERS Invoice</title>
+  <style>
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    th {
+      text-align: center;
+    }
+
+    .no-border {
+      border: none;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    input[type="text"],
+    textarea {
+      border: none;
+      box-sizing: border-box;
+    }
+
+    .print-btn,
+    .add-btn {
+      margin: 20px 0;
+      display: block;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+
       table {
-        border: 1px solid black;
-        border-collapse: collapse;
-        text-align: center;
         width: 100%;
+        height: 100vh;
       }
 
-      td,
-      th {
-        border: 1px solid black;
-        padding: 5px;
-      }
-
-      th {
-        text-align: center;
-      }
-
-      .no-border {
-        border: none;
-      }
-
-      .text-left {
-        text-align: left;
-      }
-
-      .text-right {
-        text-align: right;
-      }
-
-      input[type="text"],
-      textarea {
-        border: none;
-        box-sizing: border-box;
+      html,
+      body {
+        width: 100%;
+        height: 100%;
       }
 
       .print-btn,
       .add-btn {
-        margin: 20px 0;
-        display: block;
+        display: none;
       }
+    }
+  </style>
+</head>
 
-      @media print {
-        body {
-          margin: 0;
-          padding: 0;
-          height: 100vh;
-        }
-
-        table {
-          width: 100%;
-          height: 100vh;
-        }
-
-        html,
-        body {
-          width: 100%;
-          height: 100%;
-        }
-        .print-btn,
-        .add-btn {
-          display: none;
-        }
-      }
-    </style>
-  </head>
-
-  <body style="width: 80%">
-    <form id="invoiceForm">
-      <table>
-        <tr>
-          <td colspan="6">
-            Subject to VAPI Jurisdiction
-            <br />
-            <p style="font-size: 50px; margin: 0"><b>GUPTA TRADING</b></p>
-            <br />
-            <b>OLD PLASTIC SCRAPS</b>
-          </td>
-          <td colspan="2">
-            Mob.: 9104538552
-            <br />
-            <p style="font-size: small">
-              Original for Buyer<br />
-              Duplicates for Transport<br />
-              Triplicate for Supplier
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="8" style="border: 1px solid black">
-            House No. 2741, Bharat Nagar, Gram Panchayat, Rata, Vapi - 396
-            191.Dist.Valsad.
-          </td>
-        </tr>
-        <tr>
-          <td style="border: 1px solid black" colspan="2">
-            <b>GSTIN : 24CIOPG143J1ZB</b>
-          </td>
-          <td style="border: 1px solid black" colspan="2">
-            <b>PAN No. : CIOPG1434J</b>
-          </td>
-          <td style="border: 1px solid black" colspan="2">
-            <b>State : Gujarat</b>
-          </td>
-          <td style="border: 1px solid black" colspan="2">
-            <b>Code : 24</b>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="8" style="border: 1px solid black">
-            <b>TAX INVOICE</b>
-            <br />
-            Tax Invoice For Goods Service
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4" class="text-left">
-            <div style="display: flex">
-              <b>Name : </b>
-              <div id="pty">
-                <select id="partySelect" onchange="fillPartyDetails()">
-                  <option value="">Select Party</option>
-                </select>
-              </div>
+<body style="width: 80%">
+  <form id="invoiceForm">
+    <table>
+      <tr>
+        <td colspan="1.5" style="border-right: 0px;">
+          <img src="./ganesh.png" width="100" height="100" />
+        </td>
+        <td colspan="5" style="border-left: 0px; border-right: 0px;">
+          Subject to VAPI Jurisdiction
+          <br />
+          <p style="font-size: 50px; margin: 0"><b>GUPTA TRADING</b></p>
+          <b>OLD PLASTIC SCRAPS</b>
+          <br />
+          House No. 2741, Bharat Nagar, Gram Panchayat, Rata, Vapi - 396 191.Dist.Valsad.
+          <br />
+          <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+            <div>
+              <b>GSTIN : 24CIOPG1434J1ZB</b>
             </div>
-            <input
-              type="text"
-              id="newPartyName"
-              placeholder="Enter new party name"
-              style="display: none"
-            />
-            <br />
-            <b>Address : </b
-            ><textarea id="address" rows="3" style="width: 100%"></textarea>
-            <br />
-            <b>Party GSTIN / PAN No.: </b><input type="text" id="gstNo" />
-            <br />
-            <b>State : </b><input type="text" id="state" value="Gujarat" />
-            <b>State Code : </b><input type="text" id="stateCode" value="24" />
-          </td>
+            <div>
+              <b>PAN No. : CIOPG1434J</b>
+            </div>
+          </div>
+        </td>
+        <td colspan="2" style="padding: 0; border-left: 0px;">
+          Mob.: 9104538552
+          <br />
+          <br />
+          <br />
+          <p style="font-size: small; border-top: 1px solid black; border-left: 1px solid black; padding: 0px;">
+            Original for Buyer<br />
+            Duplicates for Transport<br />
+            Triplicate for Supplier
+          </p>
+        </td>
+      </tr>
+      <tr>
+      </tr>
 
-          <td colspan="4" class="text-left">
-            Invoice No.: <input type="text" value="00" /> Dt.:
-            <input type="date" id="date" />
-            <br />
-            Challan No.: <input type="text" value="00" />
-            <br />
-            Order No.: <input type="text" value="00" />
-            <br />
-            Transportation Mode: <input type="text" />
-            <br />
-            Vehicle No.: <input type="text" value="GJ15AV0445" />
-            <br />
-            L.R. No.: <input type="text" />
-            <br />
-            E-Way Bill No.: <input type="text" />
-          </td>
-        </tr>
+      <tr>
+        <td colspan="8" style="border: 1px solid black">
+          <b>TAX INVOICE</b>
+          <br />
+          Tax Invoice For Goods Service
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-left">
+          <div style="display: flex">
+            <b>Name : </b>
+            <div id="pty">
+              <select id="partySelect" onchange="fillPartyDetails()">
+                <option value="">Select Party</option>
+              </select>
+            </div>
+          </div>
+          <input type="text" id="newPartyName" placeholder="Enter new party name" style="display: none" />
+          <br />
+          <b>Address : </b><textarea id="address" rows="3" style="width: 100%"></textarea>
+          <br />
+          <b>Party GSTIN / PAN No.: </b><input type="text" id="gstNo" />
+          <br />
+          <b>State : </b><input type="text" id="state" value="Gujarat" />
+          <b>State Code : </b><input type="text" id="stateCode" value="24" />
+        </td>
 
-        <tr>
-          <th>Sr.<br />No</th>
-          <th colspan="2">DESCRIPTION OF GOODS</th>
-          <th>HSN/SAC<br />CODE</th>
-          <th>QTY.</th>
-          <th>RATE</th>
-          <th colspan="2">AMOUNT Rs.</th>
-        </tr>
-        <tbody id="productTable">
-          <tr>
-            <td><input type="text" value="1" /></td>
-            <td colspan="2"><input type="text" class="description" /></td>
-            <td><input type="text" class="hsn" /></td>
-            <td><input type="text" class="qty" /></td>
-            <td><input type="text" class="rate" /></td>
-            <td colspan="2"><input type="text" class="amount" readonly /></td>
-          </tr>
-        </tbody>
-        <tr>
-          <td colspan="8" class="no-border text-right">
-            <button type="button" class="add-btn" onclick="addProduct()">
-              Add Product
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td
-            colspan="4"
-            rowspan="3"
-            class="text-left no-border"
-            style="font-weight: bold"
-          >
-            Bank Name : ICICI BANK<br />
-            A/c No. : 017905502629<br />
-            IFSC CODE : ICIC0000179<br />
-            Branch : Vapi
-          </td>
-          <td colspan="2">Total Amount Before Tax</td>
-          <td colspan="2"><input type="text" id="totalAmount" readonly /></td>
-        </tr>
-        <tr>
-          <td colspan="2">ADD CGST @ 9%</td>
-          <td colspan="2"><input type="text" id="cgstAmount" readonly /></td>
-        </tr>
-        <tr>
-          <td colspan="2">ADD SGST @ 9%</td>
-          <td colspan="2"><input type="text" id="sgstAmount" readonly /></td>
-        </tr>
-        <tr>
-          <td colspan="4" rowspan="2" class="text-left">
-            <b>Rupees :</b>
-            <input type="text" id="totalInWords" style="width: 100%" />
-          </td>
-          <td colspan="2">ADD IGST @ 0%</td>
-          <td colspan="2"><input type="text" id="igstAmount" readonly /></td>
-        </tr>
-        <tr>
-          <td colspan="2"><b>GRAND TOTAL</b></td>
-          <td colspan="2"><input type="text" id="grandTotal" readonly /></td>
-        </tr>
-        <tr>
-          <td
-            colspan="4"
-            rowspan="3"
-            class="text-left"
-            style="font-size: small"
-          >
-            <b>E. & O.E.</b>
-            <br />
-            <br />
-            I/We hereby certify that my/our Registration certificate under The
-            GST Act 2017 is in force on the date on which the sale of the goods
-            specified in the bill/cash memorandum is made by me/us and that the
-            transaction of sale covered by this bill/cash memorandum has been
-            effected by me/us in the regular course of my/our business.
-          </td>
-          <td colspan="4" class="text-center">
-            For <b>GUPTA TRADERS</b>
-            <br />
-            <br />
-            Ramesh Gupta
-            <br />
-            Authorised Signatory
-          </td>
-        </tr>
-      </table>
-      <button type="button" class="print-btn" onclick="window.print()">
-        Print
-      </button>
-    </form>
+        <td colspan="4" class="text-left">
+          Invoice No.: <input type="text" value="00" /> Dt.:
+          <input type="date" id="date" />
+          <br />
+          Challan No.: <input type="text" value="00" />
+          <br />
+          Order No.: <input type="text" value="00" />
+          <br />
+          Transportation Mode: <input type="text" />
+          <br />
+          Vehicle No.: <input type="text" value="GJ15AV0445" />
+          <br />
+          L.R. No.: <input type="text" />
+          <br />
+          E-Way Bill No.: <input type="text" />
+        </td>
+      </tr>
 
-    <script>
-      const parties = {
-        "Fatima Plastic": {
-          address:
-            "PLOT No.28, Survey No.375/1, Ekta Nagar, Dungri Falia Vapi, Valsad, Gujarat-396195.",
-          gstNo: "24BDGPK9119Q1ZZ",
-        },
-        "Jesan Plastic": {
-          address:
-            "Ground Floor H.No. 1719 Nr.,Udhyog Bhavan, Bhenslore, Nani Daman.",
-          gstNo: "26ANMPC5950G1ZZ",
-        },
-        "Golden Plastic": {
-          address:
-            "PL - 4 , Ekta Nagar , Dungri Faliya Degam road , Dungra, vapi.",
-          gstNo: "24ALHPK1605P1Z1",
-        },
-        new: {},
-      };
+      <tr>
+        <th>Sr.<br />No</th>
+        <th colspan="2">DESCRIPTION OF GOODS</th>
+        <th>HSN/SAC<br />CODE</th>
+        <th>QTY.</th>
+        <th>RATE</th>
+        <th colspan="2">AMOUNT Rs.</th>
+      </tr>
+      <tbody id="productTable">
+        <tr>
+          <td><input type="text" value="1" /></td>
+          <td colspan="2"><input type="text" class="description" /></td>
+          <td><input type="text" class="hsn" /></td>
+          <td><input type="text" class="qty" /></td>
+          <td><input type="text" class="rate" /></td>
+          <td colspan="2"><input type="text" class="amount" readonly /></td>
+        </tr>
+      </tbody>
+      <tr>
+        <td colspan="8" class="no-border text-right">
+          <button type="button" class="add-btn" onclick="addProduct()">
+            Add Product
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" rowspan="3" class="text-left no-border" style="font-weight: bold">
+          Bank Name : ICICI BANK<br />
+          A/c No. : 017905502629<br />
+          IFSC CODE : ICIC0000179<br />
+          Branch : Vapi
+        </td>
+        <td colspan="2">Total Amount Before Tax</td>
+        <td colspan="2"><input type="text" id="totalAmount" readonly /></td>
+      </tr>
+      <tr>
+        <td colspan="2" id="cgstLabel">ADD CGST @ 9%</td>
+        <td colspan="2"><input type="text" id="cgstAmount" readonly /></td>
+      </tr>
+      <tr>
+        <td colspan="2" id="sgstLabel">ADD SGST @ 9%</td>
+        <td colspan="2"><input type="text" id="sgstAmount" readonly /></td>
+      </tr>
+      <tr>
+        <td colspan="4" rowspan="2" class="text-left">
+          <b>Rupees :</b>
+          <input type="text" id="totalInWords" style="width: 100%" />
+        </td>
+        <td colspan="2" id="igstLabel">ADD IGST @ 0%</td>
+        <td colspan="2"><input type="text" id="igstAmount" readonly /></td>
+      </tr>
 
-      const selectElement = document.getElementById("partySelect");
+      <tr>
+        <td colspan="2"><b>GRAND TOTAL</b></td>
+        <td colspan="2"><input type="text" id="grandTotal" readonly /></td>
+      </tr>
+      <tr>
+        <td colspan="4" rowspan="3" class="text-left" style="font-size: small">
+          <b>E. & O.E.</b>
+          <br />
+          <br />
+          I/We hereby certify that my/our Registration certificate under The
+          GST Act 2017 is in force on the date on which the sale of the goods
+          specified in the bill/cash memorandum is made by me/us and that the
+          transaction of sale covered by this bill/cash memorandum has been
+          effected by me/us in the regular course of my/our business.
+        </td>
+        <td colspan="4" class="text-center">
+          For <b>GUPTA TRADERS</b>
+          <br />
+          <br />
+          Ramesh Gupta
+          <br />
+          Authorised Signatory
+        </td>
+      </tr>
+    </table>
+    <button type="button" class="print-btn" onclick="window.print()">
+      Print
+    </button>
+  </form>
 
-      // Create an option for each party
-      for (const partyId in parties) {
-        const option = document.createElement("option");
-        option.value = partyId;
-        option.text = partyId; // You can customize the text as needed
-        selectElement.appendChild(option);
+  <script>
+    const parties = {
+      "Fatima Plastic": {
+        address:
+          "PLOT No.28, Survey No.375/1, Ekta Nagar, Dungri Falia Vapi, Valsad, Gujarat-396195.",
+        gstNo: "24BDGPK9119Q1ZZ",
+      },
+      "Jesan Plastic": {
+        address:
+          "Ground Floor H.No. 1719 Nr.,Udhyog Bhavan, Bhenslore, Nani Daman.",
+        gstNo: "26ANMPC5950G1ZZ",
+      },
+      "Golden Plastic": {
+        address:
+          "PL - 4 , Ekta Nagar , Dungri Faliya Degam road , Dungra, vapi.",
+        gstNo: "24ALHPK1605P1Z1",
+      },
+      new: {},
+    };
+
+    const selectElement = document.getElementById("partySelect");
+
+    // Create an option for each party
+    for (const partyId in parties) {
+      const option = document.createElement("option");
+      option.value = partyId;
+      option.text = partyId; // You can customize the text as needed
+      selectElement.appendChild(option);
+    }
+
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("date").value = today;
+
+    function fillPartyDetails() {
+      const partySelect = document.getElementById("partySelect").value;
+      const pty = document.getElementById("pty");
+      const address = document.getElementById("address");
+      const gstNo = document.getElementById("gstNo");
+
+      if (partySelect === "new") {
+        document.getElementById("partySelect").style.display = "none";
+        pty.innerHTML = `<input type="text" id="newPartyName" placeholder="Enter new party name"/>`;
+        address.value = "";
+        gstNo.value = "";
+      } else if (parties[partySelect]) {
+        address.value = parties[partySelect].address;
+        gstNo.value = parties[partySelect].gstNo;
+      } else {
+        address.value = "";
+        gstNo.value = "";
       }
+    }
 
-      const today = new Date().toISOString().split("T")[0];
-      document.getElementById("date").value = today;
-
-      function fillPartyDetails() {
-        const partySelect = document.getElementById("partySelect").value;
-        const pty = document.getElementById("pty");
-        const address = document.getElementById("address");
-        const gstNo = document.getElementById("gstNo");
-
-        if (partySelect === "new") {
-          document.getElementById("partySelect").style.display = "none";
-          pty.innerHTML = `<input type="text" id="newPartyName" placeholder="Enter new party name"/>`;
-          address.value = "";
-          gstNo.value = "";
-        } else if (parties[partySelect]) {
-          address.value = parties[partySelect].address;
-          gstNo.value = parties[partySelect].gstNo;
-        } else {
-          address.value = "";
-          gstNo.value = "";
-        }
-      }
-
-      function addProduct() {
-        const productTable = document.getElementById("productTable");
-        const newRow = document.createElement("tr");
-
-        newRow.innerHTML = `
-                <td><input type="text" value="${
-                  productTable.rows.length + 1
-                }" /></td>
+    function addProduct() {
+      const productTable = document.getElementById("productTable");
+      const newRow = document.createElement("tr");
+      
+      // <td><input type="text" value="${productTable.rows.length + 1}" /></td>
+      newRow.innerHTML = `
+                <td><input type="text" value="" /></td>
                 <td colspan="2"><input type="text" class="description" /></td>
                 <td><input type="text" class="hsn" /></td>
                 <td><input type="text" class="qty" /></td>
@@ -320,128 +304,152 @@
                 <td colspan="2"><input type="text" class="amount" readonly /></td>
             `;
 
-        productTable.appendChild(newRow);
-      }
+      productTable.appendChild(newRow);
+    }
 
-      document
-        .getElementById("invoiceForm")
-        .addEventListener("input", function (event) {
-          if (
-            event.target.classList.contains("qty") ||
-            event.target.classList.contains("rate")
-          ) {
-            updateAmounts();
-          }
-        });
-
-      function updateAmounts() {
-        let totalAmount = 0;
-        document.querySelectorAll("#productTable tr").forEach((row) => {
-          const qty = parseFloat(row.querySelector(".qty").value) || 0;
-          const rate = parseFloat(row.querySelector(".rate").value) || 0;
-          const amount = qty * rate;
-          row.querySelector(".amount").value = amount.toFixed(2);
-          totalAmount += amount;
-        });
-
-        const cgstAmount = totalAmount * 0.09;
-        const sgstAmount = totalAmount * 0.09;
-        const igstAmount = 0;
-        const grandTotal = totalAmount + cgstAmount + sgstAmount + igstAmount;
-
-        document.getElementById("totalAmount").value = totalAmount.toFixed(2);
-        document.getElementById("cgstAmount").value = cgstAmount.toFixed(2);
-        document.getElementById("sgstAmount").value = sgstAmount.toFixed(2);
-        document.getElementById("igstAmount").value = igstAmount.toFixed(2);
-        document.getElementById("grandTotal").value = grandTotal.toFixed(2);
-
-        document.getElementById("totalInWords").value =
-          numberToWords(grandTotal);
-      }
-
-      var a = [
-        "",
-        "one ",
-        "two ",
-        "three ",
-        "four ",
-        "five ",
-        "six ",
-        "seven ",
-        "eight ",
-        "nine ",
-        "ten ",
-        "eleven ",
-        "twelve ",
-        "thirteen ",
-        "fourteen ",
-        "fifteen ",
-        "sixteen ",
-        "seventeen ",
-        "eighteen ",
-        "nineteen",
-      ];
-      var b = [
-        "",
-        "",
-        "twenty",
-        "thirty",
-        "forty",
-        "fifty",
-        "sixty",
-        "seventy",
-        "eighty",
-        "ninety",
-      ];
-
-      function numberToWords(num) {
-        if ((num = num.toString()).length > 9) return "overflow";
-
-        let parts = num.split("."); // Split the number into integer and decimal parts
-
-        // Handle the integer part
-        let intPart = ("000000000" + parts[0])
-          .substr(-9)
-          .match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
-        let str = "";
-        str +=
-          intPart[1] != 0
-            ? (a[Number(intPart[1])] ||
-                b[intPart[1][0]] + " " + a[intPart[1][1]]) + "crore "
-            : "";
-        str +=
-          intPart[2] != 0
-            ? (a[Number(intPart[2])] ||
-                b[intPart[2][0]] + " " + a[intPart[2][1]]) + "lakh "
-            : "";
-        str +=
-          intPart[3] != 0
-            ? (a[Number(intPart[3])] ||
-                b[intPart[3][0]] + " " + a[intPart[3][1]]) + "thousand "
-            : "";
-        str +=
-          intPart[4] != 0
-            ? (a[Number(intPart[4])] ||
-                b[intPart[4][0]] + " " + a[intPart[4][1]]) + "hundred "
-            : "";
-        str +=
-          intPart[5] != 0
-            ? (str != "" ? "and " : "") +
-              (a[Number(intPart[5])] ||
-                b[intPart[5][0]] + " " + a[intPart[5][1]]) +
-              "rupees "
-            : "";
-
-        // Handle the decimal part
-        if (parts[1]) {
-          let decimalPart = parts[1].substr(0, 2);
-          str += "and " + a[Number(decimalPart)] + " paise only";
-        } else {
-          str += "only";
+    document
+      .getElementById("invoiceForm")
+      .addEventListener("input", function (event) {
+        if (
+          event.target.classList.contains("qty") ||
+          event.target.classList.contains("rate")
+        ) {
+          updateAmounts();
         }
+      });
 
-        return str.toUpperCase();
+    function updateAmounts() {
+      let totalAmount = 0;
+      document.querySelectorAll("#productTable tr").forEach((row) => {
+        const qty = parseFloat(row.querySelector(".qty").value) || 0;
+        const rate = parseFloat(row.querySelector(".rate").value) || 0;
+        const amount = qty * rate;
+        row.querySelector(".amount").value = amount.toFixed(2);
+        totalAmount += amount;
+      });
+
+      const gstNo = document.getElementById("gstNo").value.trim();
+      const gstPrefix = gstNo.substring(0, 2);
+
+      let cgstAmount = 0;
+      let sgstAmount = 0;
+      let igstAmount = 0;
+
+      if (gstPrefix === "26") {
+        // Inter-state: IGST @ 18%
+        igstAmount = totalAmount * 0.18;
+        document.getElementById("cgstLabel").innerText = "ADD CGST @ 0%";
+        document.getElementById("sgstLabel").innerText = "ADD SGST @ 0%";
+        document.getElementById("igstLabel").innerText = "ADD IGST @ 18%";
+      } else {
+        // Intra-state: CGST @ 9% + SGST @ 9%
+        cgstAmount = totalAmount * 0.09;
+        sgstAmount = totalAmount * 0.09;
+        document.getElementById("cgstLabel").innerText = "ADD CGST @ 9%";
+        document.getElementById("sgstLabel").innerText = "ADD SGST @ 9%";
+        document.getElementById("igstLabel").innerText = "ADD IGST @ 0%";
       }
-    </script>
-  </body>
+
+      const grandTotal = totalAmount + cgstAmount + sgstAmount + igstAmount;
+
+      document.getElementById("totalAmount").value = totalAmount.toFixed(2);
+      document.getElementById("cgstAmount").value = cgstAmount.toFixed(2);
+      document.getElementById("sgstAmount").value = sgstAmount.toFixed(2);
+      document.getElementById("igstAmount").value = igstAmount.toFixed(2);
+      document.getElementById("grandTotal").value = grandTotal.toFixed(2);
+
+      document.getElementById("totalInWords").value = numberToWords(grandTotal);
+    }
+
+
+    document.getElementById("gstNo").addEventListener("input", updateAmounts);
+
+
+
+    var a = [
+      "",
+      "one ",
+      "two ",
+      "three ",
+      "four ",
+      "five ",
+      "six ",
+      "seven ",
+      "eight ",
+      "nine ",
+      "ten ",
+      "eleven ",
+      "twelve ",
+      "thirteen ",
+      "fourteen ",
+      "fifteen ",
+      "sixteen ",
+      "seventeen ",
+      "eighteen ",
+      "nineteen",
+    ];
+    var b = [
+      "",
+      "",
+      "twenty",
+      "thirty",
+      "forty",
+      "fifty",
+      "sixty",
+      "seventy",
+      "eighty",
+      "ninety",
+    ];
+
+    function numberToWords(num) {
+      if ((num = num.toString()).length > 9) return "overflow";
+
+      let parts = num.split("."); // Split the number into integer and decimal parts
+
+      // Handle the integer part
+      let intPart = ("000000000" + parts[0])
+        .substr(-9)
+        .match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+      let str = "";
+      str +=
+        intPart[1] != 0
+          ? (a[Number(intPart[1])] ||
+            b[intPart[1][0]] + " " + a[intPart[1][1]]) + "crore "
+          : "";
+      str +=
+        intPart[2] != 0
+          ? (a[Number(intPart[2])] ||
+            b[intPart[2][0]] + " " + a[intPart[2][1]]) + "lakh "
+          : "";
+      str +=
+        intPart[3] != 0
+          ? (a[Number(intPart[3])] ||
+            b[intPart[3][0]] + " " + a[intPart[3][1]]) + "thousand "
+          : "";
+      str +=
+        intPart[4] != 0
+          ? (a[Number(intPart[4])] ||
+            b[intPart[4][0]] + " " + a[intPart[4][1]]) + "hundred "
+          : "";
+      str +=
+        intPart[5] != 0
+          ? (str != "" ? "and " : "") +
+          (a[Number(intPart[5])] ||
+            b[intPart[5][0]] + " " + a[intPart[5][1]]) +
+          "rupees "
+          : "";
+
+      // Handle the decimal part
+      if (parts[1]) {
+        let decimalPart = parts[1].substr(0, 2);
+        str += "and " + a[Number(decimalPart)] + " paise only";
+      } else {
+        str += "only";
+      }
+
+      return str.toUpperCase();
+    }
+  </script>
+</body>
+
 </html>
